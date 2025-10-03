@@ -25,11 +25,11 @@ public class ShapeObjectsEditor implements Initializable {
 
     @FXML
     private Canvas canvas;
-    
-    private final Shape[] shapes = new Shape[ARRAY_SIZE];
-    private ShapeEditor currentEditor;
+
     @Setter
     private Stage stage;
+    private final Shape[] shapes = new Shape[ARRAY_SIZE];
+    private ShapeEditor currentEditor;
     private GraphicsContext gc;
 
     @Override
@@ -37,6 +37,30 @@ public class ShapeObjectsEditor implements Initializable {
         setupCanvasEvents();
         gc = canvas.getGraphicsContext2D();
         startPointEditor();
+    }
+    
+    @FXML
+    public void startPointEditor() {
+        currentEditor = new PointEditor(gc, shapes);
+        updateTitle("Точка");
+    }
+    
+    @FXML
+    public void startLineEditor() {
+        currentEditor = new LineEditor(gc, shapes);
+        updateTitle("Лінія");
+    }
+    
+    @FXML
+    public void startRectEditor() {
+        currentEditor = new RectEditor(gc, shapes);
+        updateTitle("Прямокутник");
+    }
+    
+    @FXML
+    public void startEllipseEditor() {
+        currentEditor = new EllipseEditor(gc, shapes);
+        updateTitle("Еліпс");
     }
 
     @FXML
@@ -68,30 +92,6 @@ public class ShapeObjectsEditor implements Initializable {
             Позначка режиму: в заголовку вікна"""
         );
         alert.showAndWait();
-    }
-    
-    @FXML
-    public void startPointEditor() {
-        currentEditor = new PointEditor(gc, shapes);
-        updateTitle("Точка");
-    }
-    
-    @FXML
-    public void startLineEditor() {
-        currentEditor = new LineEditor(gc, shapes);
-        updateTitle("Лінія");
-    }
-    
-    @FXML
-    public void startRectEditor() {
-        currentEditor = new RectEditor(gc, shapes);
-        updateTitle("Прямокутник");
-    }
-    
-    @FXML
-    public void startEllipseEditor() {
-        currentEditor = new EllipseEditor(gc, shapes);
-        updateTitle("Еліпс");
     }
 
     private void setupCanvasEvents() {
