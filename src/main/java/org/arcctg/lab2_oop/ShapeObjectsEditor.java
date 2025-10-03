@@ -36,7 +36,6 @@ public class ShapeObjectsEditor implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setupCanvasEvents();
         gc = canvas.getGraphicsContext2D();
-        startPointEditor();
     }
     
     @FXML

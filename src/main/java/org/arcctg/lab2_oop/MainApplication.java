@@ -17,7 +17,7 @@ public class MainApplication extends Application {
         ShapeObjectsEditor controller = fxmlLoader.getController();
         controller.setStage(stage);
 
-        stage.setTitle("Графічний редактор - Точка");
+        stage.setTitle("Графічний редактор");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
